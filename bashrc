@@ -14,6 +14,10 @@
 #     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 # fi
 
+# ---------------------------------- COMPLETION -------------------------------
+
+source <(kubectl completion $(basename $SHELL))
+
 # --------------------------------- ALIASES -----------------------------------
 
 # LS
@@ -27,12 +31,16 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias v='nvim'
 alias cc='gcc -Wall -Wextra -Werror --pedantic -std=c99'
+
+# Sourcing
 alias sbash='source ~/.bashrc'
+alias sdef='source ~/.scw_default'
+alias sdev='source ~/.scw_dev'
+
 
 # Pacman & Yay
 alias p='yay --needed -S'
 alias pu='yay --needed -Syu'
-
 
 # Git
 alias gs='git status'
@@ -44,6 +52,11 @@ command -v bat > /dev/null && \
         alias bat='bat --style=header-filename,header-filesize,rule,snip' && \
         alias cat='bat --pager=never' && \
         alias less='bat'
+
+# K8S
+alias k='kubectl'
+complete -F __start_kubectl k
+
 
 # MKCD
 mkcd () {

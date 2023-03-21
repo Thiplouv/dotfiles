@@ -30,17 +30,20 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias v='nvim'
+alias vbash='nvim ~/.bashrc'
 alias cc='gcc -Wall -Wextra -Werror --pedantic -std=c99'
 
 # Sourcing
 alias sbash='source ~/.bashrc'
 alias sdef='source ~/.scw_default'
 alias sdev='source ~/.scw_dev'
+alias sv='source ./.venv/bin/activate'
 
 
 # Pacman & Yay
-alias p='yay --needed -S'
+alias pi='yay --needed -S'
 alias pu='yay --needed -Syu'
+alias pr='yay -Rcns'
 
 # Git
 alias gs='git status'

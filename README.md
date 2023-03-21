@@ -7,6 +7,6 @@ Repository for all the Linux dotfiles that I need to import quickly
 
 ## **Set Nautilus as default file manager**
 
-    xdg-mime default nautilus.desktop inode/directory application/x-gnome-saved-search
+    xdg-mime default org.gnome.Nautilus.desktop inode/directory application/x-gnome-saved-search
 
 

@@ -9,4 +9,7 @@ Repository for all the Linux dotfiles that I need to import quickly
 
     xdg-mime default org.gnome.Nautilus.desktop inode/directory application/x-gnome-saved-search
 
+## **Curent Window Only Extension**
+    
+    https://github.com/mmai/Current_screen_only_on_window_switcher
 

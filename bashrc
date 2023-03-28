@@ -47,7 +47,7 @@ alias pr='yay -Rcns'
 
 # Git
 alias gs='git status'
-alias gl='git log --oneline'
+alias gl='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all'
 alias gcm='git checkout master'
 
 ### CAT & LESS
@@ -59,7 +59,8 @@ command -v bat > /dev/null && \
 # K8S
 alias k='kubectl'
 complete -F __start_kubectl k
-
+alias kda='kubectl delete all --all'
+alias kds='kubectl delete secrets --all'
 
 # MKCD
 mkcd () {

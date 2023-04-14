@@ -49,6 +49,12 @@ alias pr='yay -Rcns'
 alias gs='git status'
 alias gl='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all'
 alias gcm='git checkout master'
+alias gb='git branch'
+alias gp='git push'
+alias gpf='git push -f'
+alias gpr='git pull --rebase'
+alias grm='git rebase master'
+
 
 ### CAT & LESS
 command -v bat > /dev/null && \

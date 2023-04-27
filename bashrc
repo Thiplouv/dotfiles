@@ -25,18 +25,11 @@ alias l='lsd -lhF --color=auto --oneline --group-dirs first'
 alias la='lsd -lhFA --color=auto --oneline --group-dirs first'
 alias tree='lsd --tree'
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias diff='diff --color=auto'
-alias v='nvim'
-alias vbash='nvim ~/.bashrc'
-alias cc='gcc -Wall -Wextra -Werror --pedantic -std=c99'
-
 # Sourcing
 alias sbash='source ~/.bashrc'
 alias sdef='source ~/.scw_default'
 alias sdev='source ~/.scw_dev'
+alias sprod='source ~/.scw_prod'
 alias sv='source ./.venv/bin/activate'
 
 
@@ -67,6 +60,19 @@ alias k='kubectl'
 complete -F __start_kubectl k
 alias kda='kubectl delete all --all'
 alias kds='kubectl delete secrets --all'
+
+# DB
+alias cdb='psql -h 127.0.0.1 --port 5432 -d rdb -U'
+
+# Others
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias v='nvim'
+alias vbash='nvim ~/.bashrc'
+alias cc='gcc -Wall -Wextra -Werror --pedantic -std=c99'
+alias tocb='xclip -selection clipboard'
 
 # MKCD
 mkcd () {

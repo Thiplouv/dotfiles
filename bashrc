@@ -47,7 +47,7 @@ alias gp='git push'
 alias gpf='git push -f'
 alias gpr='git pull --rebase'
 alias grm='git rebase master'
-
+alias gst='git stash push -m'
 
 ### CAT & LESS
 command -v bat > /dev/null && \
@@ -60,6 +60,7 @@ alias k='kubectl'
 complete -F __start_kubectl k
 alias kda='kubectl delete all --all'
 alias kds='kubectl delete secrets --all'
+alias kl='kubectl logs -f'
 
 # DB
 alias cdb='psql -h 127.0.0.1 --port 5432 -d rdb -U'

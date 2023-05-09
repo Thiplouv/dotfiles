@@ -1,0 +1,7 @@
+# Set Up global gitignore file : git config --global core.excludesfile ~/.gitignore
+
+# VS Code
+.vscode
+
+# Pyenv
+.python-version

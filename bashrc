@@ -17,6 +17,8 @@
 # ---------------------------------- COMPLETION -------------------------------
 
 source <(kubectl completion $(basename $SHELL))
+complete -F __start_kubectl k
+complete -cf doas
 
 # --------------------------------- ALIASES -----------------------------------
 
@@ -57,13 +59,16 @@ command -v bat > /dev/null && \
 
 # K8S
 alias k='kubectl'
-complete -F __start_kubectl k
 alias kda='kubectl delete all --all'
 alias kds='kubectl delete secrets --all'
 alias kl='kubectl logs -f'
 
 # DB
 alias cdb='psql -h 127.0.0.1 --port 5432 -d rdb -U'
+
+# Doas
+alias sudo='doas'
+alias sudoedit='doas rnano'
 
 # Others
 alias grep='grep --color=auto'
@@ -114,3 +119,5 @@ source /usr/share/nvm/init-nvm.sh
 # Poetry Path
 export PATH="/home/tplouviez/.local/bin:$PATH"
 
+# Pyenv
+eval "$(pyenv init -)"

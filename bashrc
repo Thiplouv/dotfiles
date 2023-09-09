@@ -5,14 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# --------------------------------- SSH AGENT -----------------------------------
-
-# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-#     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-# fi
-# if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-#     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-# fi
 
 # ---------------------------------- COMPLETION -------------------------------
 
@@ -29,9 +21,9 @@ alias tree='lsd --tree'
 
 # Sourcing
 alias sbash='source ~/.bashrc'
-alias sdef='source ~/.scw_default'
-alias sdev='source ~/.scw_dev'
-alias sprod='source ~/.scw_prod'
+# alias sdef='source ~/.scw_default'
+# alias sdev='source ~/.scw_dev'
+# alias sprod='source ~/.scw_prod'
 alias sv='source ./.venv/bin/activate'
 
 
@@ -64,7 +56,7 @@ alias kds='kubectl delete secrets --all'
 alias kl='kubectl logs -f'
 
 # DB
-alias cdb='psql -h 127.0.0.1 --port 5432 -d rdb -U'
+# alias cdb='psql -h 127.0.0.1 --port 5432 -d rdb -U'
 
 # Doas
 alias sudo='doas'
@@ -77,7 +69,7 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias v='nvim'
 alias vbash='nvim ~/.bashrc'
-alias cc='gcc -Wall -Wextra -Werror --pedantic -std=c99'
+# alias cc='gcc -Wall -Wextra -Werror --pedantic -std=c99'
 alias tocb='xclip -selection clipboard'
 
 # MKCD
@@ -85,6 +77,8 @@ mkcd () {
   mkdir -p "$1"
   cd "$1"
 }
+
+alias mkdir='mkcd'
 
 # colorize ls
 [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
@@ -111,13 +105,10 @@ PROMPT_DIRTRIM=2
 PS1="\[\033[1;35m\]\u\[\033[0;34m\] | \[\033[1;36m\]\w >\[\033[1;34m\]>\[\033[0m\] "
 
 # Scaleway CLI autocomplete initialization.
-eval "$(scw autocomplete script shell=bash)"
+# eval "$(scw autocomplete script shell=bash)"
 
 # Node Version Manager
-source /usr/share/nvm/init-nvm.sh
-
-# Poetry Path
-export PATH="/home/tplouviez/.local/bin:$PATH"
+# source /usr/share/nvm/init-nvm.sh
 
 # Pyenv
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"

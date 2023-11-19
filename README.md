@@ -13,3 +13,6 @@ Repository for all the Linux dotfiles that I need to import quickly
     
     https://github.com/mmai/Current_screen_only_on_window_switcher
 
+## **Configure yay to use doas instead of sudo**
+    yay --sudo doas --sudoflags -- --save
+

@@ -1,0 +1,33 @@
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -Wvla -std=c99 -pedantic
+
+SRC = # Sources
+TESTS = testsuite.c
+
+OBJS = $(SRC:.c=.o)
+TESTOBJS = $(TESTS:.c=.o)
+
+BIN = # Binary
+
+all: $(BIN)
+
+$(BIN): $(OBJS)
+	$(CC) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+
+check: LDLIBS += -lcriterion
+check: $(TESTOBJS) $(OBJS) 
+	# Linking
+	$(CC) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+	# Launching tests
+	./check
+
+gdb: CFLAGS += -g
+gdb: all
+
+asan: LDFLAGS += -fsanitize=address
+asan: all
+
+clean:
+	$(RM) $(OBJS) $(TESTOBJS) $(BIN) check
+
+.PHONY: all, check, gdb, asan, clean

@@ -10,7 +10,7 @@
 
 source <(kubectl completion $(basename $SHELL))
 complete -F __start_kubectl k
-complete -cf doas
+complete -F _command doas
 
 # --------------------------------- ALIASES -----------------------------------
 

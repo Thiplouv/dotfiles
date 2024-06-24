@@ -1,0 +1,62 @@
+# alacritty.toml
+
+# Theme import
+import = [
+    "~/.config/alacritty/github-dark-hc.toml"
+]
+
+live_config_reload = true
+
+[shell]
+program = "/opt/homebrew/bin/bash"
+args = ["-l"]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations     = "Buttonless"
+dynamic_padding = false
+dynamic_title   = true
+opacity         = 0.8
+blur            = true
+startup_mode    = "Maximized"
+title           = "Alacritty"
+padding         = {x = 10, y = 5}
+option_as_alt   = "Both"
+
+[scrolling]
+history = 5000
+
+[font]
+builtin_box_drawing = false
+glyph_offset = { x = 0, y = 0 }
+size                = 18
+offset = { x = 0, y = 1 }
+
+[font.normal]
+family = "Liga SFMono Nerd Font"
+
+[colors]
+transparent_background_colors = true
+draw_bold_text_with_bright_colors = true
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = {shape = "Beam", blinking = "Always"}
+unfocused_hollow = false
+
+[[keyboard.bindings]]
+action = "Paste"
+key    = "V"
+mods   = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key    = "C"
+mods   = "Control|Shift"
+
+[debug]
+# render_timer = true

@@ -1,18 +1,3 @@
 # **dotfiles**
-Repository for all the Linux dotfiles that I need to import quickly
-
-## **Brave Browser Dark Mode**
-
-    Exec=env GTK_THEME=Adwaita:dark brave %U
-
-## **Set Nautilus as default file manager**
-
-    xdg-mime default org.gnome.Nautilus.desktop inode/directory application/x-gnome-saved-search
-
-## **Curent Window Only Extension**
-    
-    https://github.com/mmai/Current_screen_only_on_window_switcher
-
-## **Configure yay to use doas instead of sudo**
-    yay --sudo doas --sudoflags -- --save
+Repository for all the Macos dotfiles that I need to import quickly
 

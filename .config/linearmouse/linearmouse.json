@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.linearmouse.app/0.9.5",
+  "schemes": [
+    {
+      "pointer": {
+        "disableAcceleration": true,
+        "acceleration": 2.5195
+      },
+      "if": {
+        "device": {
+          "serialNumber": "2609747D",
+          "productID": "0xc094",
+          "vendorID": "0x46d",
+          "category": "mouse",
+          "productName": "PRO X Wireless"
+        }
+      },
+      "scrolling": {
+        "distance": {
+          "vertical": 3
+        },
+        "reverse": {
+          "vertical": true
+        },
+        "speed": {
+          "vertical": 0
+        },
+        "acceleration": {
+          "vertical": 1
+        }
+      }
+    },
+    {
+      "pointer": {
+        "disableAcceleration": true,
+        "acceleration": 2.5195
+      },
+      "if": {
+        "device": {
+          "productID": "0xc547",
+          "productName": "USB Receiver",
+          "category": "mouse",
+          "vendorID": "0x46d"
+        }
+      },
+      "scrolling": {
+        "distance": {
+          "vertical": 3
+        },
+        "reverse": {
+          "vertical": true
+        },
+        "speed": {
+          "vertical": 0
+        },
+        "acceleration": {
+          "vertical": 1
+        }
+      }
+    }
+  ]
+}

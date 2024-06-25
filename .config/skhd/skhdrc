@@ -1,0 +1,44 @@
+# --------------------------------- YABAI --------------------------------------
+#
+#
+# Restart Yabai
+shift + alt - r : yabai --restart-service && skhd --restart-service
+
+# move window to space #
+shift + alt - 1 : yabai -m window --space 1;
+shift + alt - 2 : yabai -m window --space 2;
+shift + alt - 3 : yabai -m window --space 3;
+shift + alt - 4 : yabai -m window --space 4;
+shift + alt - 5 : yabai -m window --space 5;
+shift + alt - 6 : yabai -m window --space 6;
+shift + alt - 7 : yabai -m window --space 7;
+
+# focus previous or next window in window tree (options: prev, next)
+alt - 0x21 : yabai -m window --focus prev;
+alt - 0x1E : yabai -m window --focus next;
+
+# swap with previous or next window in window tree (options: prev, next)
+shift + alt - 0x21 : yabai -m window --swap prev;
+shift + alt - 0x1E : yabai -m window --swap next;
+
+## Resize (ctrl + lalt - ...)
+# Resize windows: ctrl + lalt - {j, k, l, ö}
+shift + lalt - 0x1B    : yabai -m window --resize right:-100:0 || yabai -m window --resize left:-100:0;
+ctrl + lalt - 0x1B    : yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:100;
+ctrl + lalt - 0x18    : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100;
+shift + lalt - 0x18 : yabai -m window --resize right:100:0 || yabai -m window --resize left:100:0;
+
+## Monitors
+# focus
+alt - 0x7B : yabai -m display --focus prev;
+alt - 0x7C : yabai -m display --focus next;
+
+# Move window to display
+shift + alt - 0x7B : yabai -m window --display 2;
+shift + alt - 0x7C : yabai -m window --display 1;
+
+# --------------------------------- LAUNCHERS ----------------------------------
+#
+# Alacritty
+alt - t : alacritty;
+alt - e : open -a Finder;

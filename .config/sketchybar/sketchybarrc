@@ -46,15 +46,14 @@ for i in "${!SPACE_ICONS[@]}"; do
 done
 
 ##### Adding Left Items #####
-# sketchybar --add item chevron left \
-#            --set chevron icon=􁉇 label.drawing=off
-
 source $ITEM_DIR/front_app.sh
 
 ##### Adding Right Items #####
 source $ITEM_DIR/calendar.sh
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/volume.sh
+source $ITEM_DIR/ram.sh
+source $ITEM_DIR/cpu.sh
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

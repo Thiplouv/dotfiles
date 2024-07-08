@@ -5,6 +5,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# ----------------------------------- IMPORTS ----------------------------------
+#
+# BWI
+[[ -r ~/.bwirc ]] && . ~/.bwirc
+
+# EPITA
+[[ -r ~/.epitarc ]] && . ~/.epitarc
+
 # --------------------------------- SHELL CONFIG -------------------------------
 #
 # Prompt Customisation

@@ -55,6 +55,7 @@ alias la='lsd -lhFA --color=auto --oneline --group-dirs first'
 alias tree='lsd --tree'
 
 # CAT & LESS
+export BAT_THEME="github-dark-hc"
 command -v bat >/dev/null &&
     alias cat='bat --style=header-filename,header-filesize,rule,snip' &&
     alias batcat='bat --pager=never' &&

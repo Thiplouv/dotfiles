@@ -19,6 +19,8 @@ font pango:SF Pro Display 12
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+exec_always --no-startup-id compfy -b
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -209,22 +211,22 @@ gaps inner 10
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        i3bar_command i3bar --transparency
+        i3bar_command i3bar
         status_command i3status
         position top
         output primary
         tray_output primary
-        font pango:SF Pro Display 12
+        font pango:SF Pro Display 13
         separator_symbol "  "
         colors {
             background #000000CC
             statusline #ffffff
-            separator #666666
+            separator #ffffff
 
-            focused_workspace  #23CDB3 #1b222D #ffffff
-            active_workspace   #222B3C #222B3C #ffffff
-            inactive_workspace #222B3C #222B3C #888888
-            urgent_workspace   #2f343a #900000 #ffffff
-            binding_mode       #2f343a #900000 #ffffff
+            focused_workspace  #000000 #000000 #ffffff
+            active_workspace   #000000 #000000 #ffffff
+            inactive_workspace #000000 #000000 #777777
+            urgent_workspace   #000000 #900000 #ffffff
+            binding_mode       #000000 #900000 #ffffff
         }
 }

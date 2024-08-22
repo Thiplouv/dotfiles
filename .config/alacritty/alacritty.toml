@@ -19,7 +19,7 @@ decorations     = "Buttonless"
 dynamic_padding = false
 dynamic_title   = true
 opacity         = 0.8
-blur            = true
+blur            = false
 startup_mode    = "Maximized"
 title           = "Alacritty"
 padding         = {x = 10, y = 5}

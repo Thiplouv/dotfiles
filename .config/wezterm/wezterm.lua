@@ -4,6 +4,7 @@ local config = {}
 
 config.window_background_opacity = 0.80
 config.color_scheme = "Github-Dark-HC"
+config.default_cursor_style = "SteadyBar"
 
 config.font = wezterm.font("Liga SFMono Nerd Font")
 config.font_size = 16

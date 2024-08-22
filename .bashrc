@@ -32,7 +32,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # Pager and editor
-export PAGER="/usr/bin/bat"
+export PAGER="/bin/less"
 export EDITOR=nvim
 
 # Video hardware accel

@@ -65,14 +65,105 @@ config.colors = {
 	},
 }
 
--- New tab working dir is $HOME
+-- Single key shortcuts
 config.keys = {
+	-- Spawn a new tab
 	{
 		key = "t",
 		mods = "CTRL|SHIFT",
 		action = act.SpawnCommandInNewTab({ cwd = wezterm.home_dir }),
 	},
+
+	-- Activate resize mode
+	{
+		key = "r",
+		mods = "CTRL|SHIFT",
+		action = act.ActivateKeyTable({
+			name = "resize_pane",
+			one_shot = false,
+		}),
+	},
+
+	-- Activate Spawn new pane mode
+	{
+		key = "Return",
+		mods = "CTRL|SHIFT",
+		action = act.ActivateKeyTable({
+			name = "spawn_pane",
+			one_shot = true,
+		}),
+	},
+
+	-- Reload Configuration
+	{
+		key = "F5",
+		mods = "CMD|SHIFT",
+		action = wezterm.action.ReloadConfiguration,
+	},
+	-- Focus pane
+	{
+		key = "h",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "k",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "j",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Down"),
+	},
+
+	-- Close current pane
+	{
+		key = "w",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
 }
+
+-- Multiple keys shortcuts
+config.key_tables = {
+	resize_pane = {
+		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
+
+		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+
+		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
+
+		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
+
+		-- Cancel the mode by pressing escape
+		{ key = "Escape", action = "PopKeyTable" },
+	},
+
+	spawn_pane = {
+		{ key = "h", action = act.SplitPane({ direction = "Left" }) },
+
+		{ key = "l", action = act.SplitPane({ direction = "Right" }) },
+
+		{ key = "k", action = act.SplitPane({ direction = "Up" }) },
+
+		{ key = "j", action = act.SplitPane({ direction = "Down" }) },
+
+		-- Cancel the mode by pressing escape
+		{ key = "Escape", action = "PopKeyTable" },
+	},
+}
+
+-- Show which key table is active in the status area
+wezterm.on("update-right-status", function(window, pane)
+	local name = window:active_key_table()
+	window:set_right_status(name or "")
+end)
 
 -- Adds option to rename tab in the command palette (Kitty way)
 wezterm.on("augment-command-palette", function(window, pane)

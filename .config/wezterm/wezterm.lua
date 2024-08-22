@@ -4,7 +4,9 @@ local config = {}
 
 config.window_background_opacity = 0.80
 config.color_scheme = "Github-Dark-HC"
-config.default_cursor_style = "SteadyBar"
+config.default_cursor_style = "BlinkingBar"
+config.cursor_blink_rate = 1000
+config.animation_fps = 144
 
 config.font = wezterm.font("Liga SFMono Nerd Font")
 config.font_size = 16

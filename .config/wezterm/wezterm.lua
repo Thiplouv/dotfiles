@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 local config = {}
 
 config.window_background_opacity = 0.80
@@ -24,6 +25,13 @@ config.command_palette_rows = 6
 config.command_palette_font_size = 16.0
 config.command_palette_bg_color = "#0a0c10"
 config.command_palette_fg_color = "#f0f3f6"
+
+-- Multiplexer
+config.unix_domains = {
+	{
+		name = "unix",
+	},
+}
 
 -- Tab Bar
 config.use_fancy_tab_bar = false
@@ -185,6 +193,32 @@ wezterm.on("augment-command-palette", function(window, pane)
 			}),
 		},
 	}
+end)
+
+-- Decide whether cmd represents a default startup invocation
+function is_default_startup(cmd)
+	if not cmd then
+		-- we were started with `wezterm` or `wezterm start` with
+		-- no other arguments
+		return true
+	end
+	if cmd.domain == "DefaultDomain" and not cmd.args then
+		-- Launched via `wezterm start --cwd something`
+		return true
+	end
+	-- we were launched some other way
+	return false
+end
+
+-- Ensure auto connect to unix socket
+wezterm.on("gui-startup", function(cmd)
+	if is_default_startup(cmd) then
+		-- for the default startup case, we want to switch to the unix domain instead
+		local unix = mux.get_domain("unix")
+		mux.set_default_domain(unix)
+		-- ensure that it is attached
+		unix:attach()
+	end
 end)
 
 return config

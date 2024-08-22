@@ -1,62 +1,62 @@
 {
-  "$schema": "https://schema.linearmouse.app/0.9.5",
-  "schemes": [
+  "schemes" : [
     {
-      "pointer": {
-        "disableAcceleration": true,
-        "acceleration": 2.5195
+      "pointer" : {
+        "acceleration" : 1,
+        "disableAcceleration" : true
       },
-      "if": {
-        "device": {
-          "serialNumber": "2609747D",
-          "productID": "0xc094",
-          "vendorID": "0x46d",
-          "category": "mouse",
-          "productName": "PRO X Wireless"
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "category" : "mouse",
+          "productName" : "PRO X Wireless",
+          "productID" : "0xc094",
+          "serialNumber" : "2609747D"
         }
       },
-      "scrolling": {
-        "distance": {
-          "vertical": 3
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
         },
-        "reverse": {
-          "vertical": true
+        "distance" : {
+          "vertical" : 4
         },
-        "speed": {
-          "vertical": 0
+        "acceleration" : {
+          "vertical" : 1
         },
-        "acceleration": {
-          "vertical": 1
+        "speed" : {
+          "vertical" : 0
         }
       }
     },
     {
-      "pointer": {
-        "disableAcceleration": true,
-        "acceleration": 2.5195
-      },
-      "if": {
-        "device": {
-          "productID": "0xc547",
-          "productName": "USB Receiver",
-          "category": "mouse",
-          "vendorID": "0x46d"
+      "if" : {
+        "device" : {
+          "productID" : "0xc547",
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d",
+          "category" : "mouse"
         }
       },
-      "scrolling": {
-        "distance": {
-          "vertical": 3
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
         },
-        "reverse": {
-          "vertical": true
+        "acceleration" : {
+          "vertical" : 1
         },
-        "speed": {
-          "vertical": 0
+        "speed" : {
+          "vertical" : 0
         },
-        "acceleration": {
-          "vertical": 1
+        "distance" : {
+          "vertical" : 4
         }
+      },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 1
       }
     }
-  ]
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
 }

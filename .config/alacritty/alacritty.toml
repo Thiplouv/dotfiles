@@ -9,7 +9,6 @@ live_config_reload = true
 
 [shell]
 program = "/opt/homebrew/bin/bash"
-args = ["-l"]
 
 [env]
 TERM = "xterm-256color"

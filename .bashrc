@@ -1,3 +1,26 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# ----------------------------------- IMPORTS ----------------------------------
+#
+# BWI
+[[ -r ~/.bwirc ]] && . ~/.bwirc
+
+# EPITA
+[[ -r ~/.epitarc ]] && . ~/.epitarc
+
+# --------------------------------- SHELL CONFIG -------------------------------
+#
+# Prompt Customisation
+PS1="🦔\[\033[0;34m\]-> \[\033[1;36m\]\w \[\033[0;34m\]$\[\033[0m\] "
+#
+# Reduce current working dir lenght
+PROMPT_DIRTRIM=2
+
 # --------------------------------- HOMEBREW -----------------------------------
 #
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -18,9 +41,9 @@ alias tree='lsd --tree'
 # CAT & LESS
 export BAT_THEME="github-dark-hc"
 command -v bat >/dev/null &&
-	alias cat='bat --style=header-filename,header-filesize,rule,snip' &&
-	alias batcat='bat --pager=never' &&
-	alias less='bat'
+    alias cat='bat --style=header-filename,header-filesize,rule,snip' &&
+    alias batcat='bat --pager=never' &&
+    alias less='bat'
 
 # Sourcing
 alias sbash='source ~/.bash_profile'
@@ -55,8 +78,8 @@ alias pu='brew update && brew upgrade && brew cu -ay'
 #
 # mkcd
 mkcd() {
-	mkdir -p "$1"
-	cd "$1"
+    mkdir -p "$1"
+    cd "$1"
 }
 
 # --------------------------------- SOFTWARES ----------------------------------
@@ -77,11 +100,3 @@ export NVM_DIR="$HOME/.nvm"
 #Jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
-
-# --------------------------------- SHELL CONFIG -------------------------------
-#
-# Prompt Customisation
-PS1="🦔\[\033[0;34m\]-> \[\033[1;36m\]\w \[\033[0;34m\]$\[\033[0m\] "
-#
-# Reduce current working dir lenght
-PROMPT_DIRTRIM=2

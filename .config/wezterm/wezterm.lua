@@ -3,17 +3,26 @@ local act = wezterm.action
 local mux = wezterm.mux
 local config = {}
 
+config.term = "xterm-256color"
+config.audible_bell = "Disabled"
+config.default_prog = { "/bin/bash" }
+config.check_for_updates = false
+config.show_update_window = false
+
+-- Window
+config.window_decorations = "RESIZE"
+config.adjust_window_size_when_changing_font_size = false
 config.window_background_opacity = 0.80
 config.color_scheme = "Github-Dark-HC"
+config.window_close_confirmation = "NeverPrompt"
+
+-- Cursor
 config.default_cursor_style = "BlinkingBar"
 config.cursor_blink_rate = 1000
 config.animation_fps = 144
 
 config.font = wezterm.font("Liga SFMono Nerd Font")
 config.font_size = 16
-
-config.term = "xterm-256color"
-config.audible_bell = "Disabled"
 
 -- Rendering settings
 config.front_end = "WebGpu"
@@ -36,6 +45,9 @@ config.unix_domains = {
 -- Tab Bar
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
+config.show_new_tab_button_in_tab_bar = false
+config.show_close_tab_button_in_tabs = false
+config.mouse_wheel_scrolls_tabs = false
 config.colors = {
 	tab_bar = {
 		background = "#0a0c10",
@@ -101,7 +113,7 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = act.ActivateKeyTable({
 			name = "spawn_pane",
-			one_shot = true,
+			one_shot = false,
 		}),
 	},
 

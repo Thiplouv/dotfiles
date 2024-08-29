@@ -88,6 +88,7 @@ alias sudo='doas'
 alias sudoedit='doas rnano'
 
 # Others
+alias w='watch -tn 1 '
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'

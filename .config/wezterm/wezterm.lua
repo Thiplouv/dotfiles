@@ -1,15 +1,20 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 local config = {}
 
 config.term = "xterm-256color"
 config.audible_bell = "Disabled"
 config.default_prog = { "/opt/homebrew/bin/bash" }
+config.check_for_updates = false
+config.show_update_window = false
 
 -- Window
 config.window_decorations = "RESIZE"
+config.adjust_window_size_when_changing_font_size = false
 config.window_background_opacity = 0.80
 config.color_scheme = "Github-Dark-HC"
+config.window_close_confirmation = "NeverPrompt"
 
 -- Cursor
 config.default_cursor_style = "BlinkingBar"
@@ -43,6 +48,8 @@ config.default_gui_startup_args = { "connect", "unix" }
 -- Tab Bar
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
+config.show_new_tab_button_in_tab_bar = false
+config.mouse_wheel_scrolls_tabs = false
 config.colors = {
 	tab_bar = {
 		background = "#0a0c10",
@@ -108,7 +115,7 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = act.ActivateKeyTable({
 			name = "spawn_pane",
-			one_shot = true,
+			one_shot = false,
 		}),
 	},
 
@@ -200,6 +207,24 @@ wezterm.on("augment-command-palette", function(window, pane)
 			}),
 		},
 	}
+end)
+
+-- Attempts to open Wezterm maximized
+wezterm.on("gui-startup", function(cmd)
+	-- Pick the active screen to maximize into, there are also other options, see the docs.
+	local active = wezterm.gui.screens().active
+
+	-- Set the window coords on spawn.
+	local tab, pane, window = mux.spawn_window(cmd or {
+		x = active.x,
+		y = active.y,
+		width = active.width,
+		height = active.height,
+	})
+
+	-- You probably don't need both, but you can also set the positions after spawn.
+	window:gui_window():set_position(active.x, active.y)
+	window:gui_window():set_inner_size(active.width, active.height)
 end)
 
 return config

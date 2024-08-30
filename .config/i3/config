@@ -24,6 +24,28 @@ set $ws10 "10"
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# i3Bar
+bar {
+        i3bar_command i3bar
+        status_command i3status
+        position top
+        output primary
+        tray_output primary
+        font pango:SF Pro Display 14
+        separator_symbol "  "
+        colors {
+            background #000000CC
+            statusline #ffffff
+            separator #ffffff
+
+            focused_workspace  #000000 #000000 #ffffff
+            active_workspace   #000000 #000000 #ffffff
+            inactive_workspace #000000 #000000 #777777
+            urgent_workspace   #000000 #900000 #ffffff
+            binding_mode       #000000 #900000 #ffffff
+        }
+}
+
 # ----------------------------- Startup Programs -------------------------------
 # Compfy
 exec_always --no-startup-id compfy -b
@@ -43,8 +65,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -e -f -k -c 000
 # NetworkManager applet
 exec --no-startup-id nm-applet
 
-# ------------------------------- Key Bindings ---------------------------------
-# Spaces
+# ---------------------------------- Spaces ------------------------------------
 # Focus
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -69,7 +90,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# Windows
+# --------------------------------- Windows ------------------------------------
 # Kill
 bindsym $mod+q kill
 
@@ -85,12 +106,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split in horizontal orientation
-#bindsym $mod+h split h
-
-# split in vertical orientation
-#bindsym $mod+v split v
-
 # Fullscreen
 bindsym $mod+f fullscreen toggle
 
@@ -99,6 +114,34 @@ bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+# Resize
+bindsym $mod+r mode "resize_window"
+mode "resize_window" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # Exit resize mode 
+        bindsym Escape mode "default"
+}
+
+# --------------------------------- Hotkeys ------------------------------------
+# Screenshots
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+
+# Lock screen
+bindsym Mod1+Shift+l exec --no-startup-id xset s activate
+
+# Launcher
+bindcode $mod+61 exec "rofi -modi drun,run -show drun"
+
+# split in horizontal orientation
+#bindsym $mod+h split h
+
+# split in vertical orientation
+#bindsym $mod+v split v
 
 # Reload config file
 bindsym $mod+Shift+c reload
@@ -120,49 +163,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec light -A 20 
 bindsym XF86MonBrightnessDown exec light -U 20
 
-# Launchers
-# Terminal
+# -------------------------------- Launchers -----------------------------------
 bindsym $mod+Return exec wezterm
 
-# Screenshots
-bindsym $mod+Shift+s exec --no-startup-id flameshot gui
-
-# Lock screen
-bindsym Mod1+Shift+l exec --no-startup-id xset s activate
-
-# Launcher
-bindcode $mod+61 exec "rofi -modi drun,run -show drun"
-
-# Resize Mode
-bindsym $mod+r mode "resize_window"
-mode "resize_window" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # Exit resize mode 
-        bindsym Escape mode "default"
-}
-
-# -------------------------------- i3Bar ---------------------------------------
-bar {
-        i3bar_command i3bar
-        status_command i3status
-        position top
-        output primary
-        tray_output primary
-        font pango:SF Pro Display 14
-        separator_symbol "  "
-        colors {
-            background #000000CC
-            statusline #ffffff
-            separator #ffffff
-
-            focused_workspace  #000000 #000000 #ffffff
-            active_workspace   #000000 #000000 #ffffff
-            inactive_workspace #000000 #000000 #777777
-            urgent_workspace   #000000 #900000 #ffffff
-            binding_mode       #000000 #900000 #ffffff
-        }
-}

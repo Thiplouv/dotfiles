@@ -46,7 +46,6 @@ config.unix_domains = {
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
-config.show_close_tab_button_in_tabs = false
 config.mouse_wheel_scrolls_tabs = false
 config.colors = {
 	tab_bar = {

@@ -14,10 +14,24 @@
 [[ -r ~/.epitarc ]] && . ~/.epitarc
 
 # --------------------------------- SHELL CONFIG -------------------------------
-#
+# Sets editing mode
+# set -o vi
+
+# Pager and editor
+# export VISUAL=nvim
+export EDITOR=nvim
+export PAGER="/bin/less"
+
+# XDG related
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # Prompt Customisation
-PS1="🐗\[\033[0;34m\]-> \[\033[1;36m\]\w \[\033[0;34m\]$\[\033[0m\] "
-PROMPT_DIRTRIM=2
+# PS1="🐗\[\033[0;34m\]-> \[\033[1;36m\]\w \[\033[0;34m\]$\[\033[0m\] "
+# PROMPT_DIRTRIM=2
+
+eval "$(starship init bash)"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # colorize ls
 [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
@@ -31,16 +45,12 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-# Pager and editor
-export PAGER="/bin/less"
-export EDITOR=nvim
-
 # Video hardware accel
 export LIBVA_DRIVER_NAME=iHD
 export VDPAU_DRIVER=va_gl
 
 # Startup programs
-pfetch
+#pfetch
 
 # ---------------------------------- COMPLETION --------------------------------
 #
@@ -97,7 +107,7 @@ alias vi='nvim'
 alias vbash='nvim ~/.bashrc'
 alias tocb='xclip -selection clipboard'
 alias gdb='gdb -q'
-alias icat='kitten icat'
+alias imgcat='wezterm imgcat'
 alias brightness='xrandr --output eDP-1 --brightness'
 
 # --------------------------------- FUNCTIONS ----------------------------------

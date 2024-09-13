@@ -5,22 +5,16 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# ----------------------------------- IMPORTS ----------------------------------
-#
-# BWI
-[[ -r ~/.bwirc ]] && . ~/.bwirc
-
-# EPITA
-[[ -r ~/.epitarc ]] && . ~/.epitarc
-
 # --------------------------------- SHELL CONFIG -------------------------------
 # Sets editing mode
 # set -o vi
 
 # Pager and editor
-# export VISUAL=nvim
+export VISUAL=nvim
 export EDITOR=nvim
-export PAGER="/bin/less"
+export PAGER="bat -p --paging=always"
+export MANPAGER="sh -c 'col -bx | bat --theme=base16-2 -l man -p'"
+export MANROFFOPT="-c"
 
 # XDG related
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -33,24 +27,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 eval "$(starship init bash)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
-# colorize ls
-[ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
-
-# Colorize MAN Pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-
 # Video hardware accel
 export LIBVA_DRIVER_NAME=iHD
 export VDPAU_DRIVER=va_gl
-
-# Startup programs
-#pfetch
 
 # ---------------------------------- COMPLETION --------------------------------
 #
@@ -60,16 +39,15 @@ complete -cf doas
 # --------------------------------- ALIASES -----------------------------------
 #
 # LS
-alias ll='lsd -lhF --color=auto --oneline --group-dirs first'
-alias la='lsd -lhFA --color=auto --oneline --group-dirs first'
-alias tree='lsd --tree'
+command -v lsd >/dev/null &&
+    alias ll='lsd -lhF --color=auto --oneline --group-dirs first' &&
+    alias la='lsd -lhFA --color=auto --oneline --group-dirs first' &&
+    alias tree='lsd --tree'
 
 # CAT & LESS
-export BAT_THEME="github-dark-hc"
 command -v bat >/dev/null &&
-    alias cat='bat --style=header-filename,header-filesize,rule,snip' &&
-    alias batcat='bat --pager=never' &&
-    alias less='bat'
+    alias cat='bat' &&
+    alias less='bat -p --paging=always'
 
 # Sourcing
 alias sbash='source ~/.bashrc'
@@ -83,29 +61,27 @@ alias pr='yay -Rcns'
 # Git
 alias gs='git status'
 alias gl='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all'
-alias gcm='git checkout master'
-alias gcom='git commit -m'
+alias master='git checkout master'
+alias gc='git commit'
 alias gb='git branch'
 alias gp='git push'
 alias gpf='git push -f'
 alias gpt='git push --follow-tags'
 alias gpr='git pull --rebase'
-alias grm='git rebase master'
 alias gst='git stash push -m'
 
 # Doas
-alias sudo='doas'
-alias sudoedit='doas rnano'
+command -v doas >/dev/null &&
+    alias sudo='doas' &&
+    alias sudoedit='doas rnano'
 
 # Others
-alias w='watch -tn 1 '
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias diff='diff --color=auto'
 alias vi='nvim'
 alias vbash='nvim ~/.bashrc'
-alias tocb='xclip -selection clipboard'
+alias w='watch -tn 1 '
+alias grep='rg'
+alias diff='diff --color=auto'
+alias copy='xclip -selection clipboard'
 alias gdb='gdb -q'
 alias imgcat='wezterm imgcat'
 alias brightness='xrandr --output eDP-1 --brightness'
@@ -133,3 +109,14 @@ source /usr/share/nvm/init-nvm.sh
 
 # Ranger configuration loading
 export RANGER_LOAD_DEFAULT_RC=false
+
+# Ripgrep
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+
+# ----------------------------------- IMPORTS ----------------------------------
+#
+# BWI
+[[ -r ~/.bwirc ]] && . ~/.bwirc
+
+# EPITA
+[[ -r ~/.epitarc ]] && . ~/.epitarc

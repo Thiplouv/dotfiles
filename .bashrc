@@ -5,31 +5,41 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# ----------------------------------- IMPORTS ----------------------------------
+# ------------------------------------- MacOS ----------------------------------
 #
-# BWI
-[[ -r ~/.bwirc ]] && . ~/.bwirc
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    export HOMEBREW_NO_ENV_HINTS=1
 
-# EPITA
-[[ -r ~/.epitarc ]] && . ~/.epitarc
+    # For some reason this is needed:
+    export PATH="/usr/local/bin:$PATH"
+
+    # Brew bash completion
+    [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+
+    # Updates
+    alias pu='brew update && brew upgrade && brew cu -ay'
+fi
 
 # --------------------------------- SHELL CONFIG -------------------------------
-#
+# Pager and editor
+export EDITOR=nvim
+
+# XDG variables (from Arch wiki)
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+export XDG_CONFIG_DIRS="/etc/xdg"
+
 # Prompt Customisation
-PS1="🦔\[\033[0;34m\]-> \[\033[1;36m\]\w \[\033[0;34m\]$\[\033[0m\] "
-#
-# Reduce current working dir lenght
-PROMPT_DIRTRIM=2
+#PS1="🦔\[\033[0;34m\]-> \[\033[1;36m\]\w \[\033[0;34m\]$\[\033[0m\] "
+#PROMPT_DIRTRIM=2
 
-# --------------------------------- HOMEBREW -----------------------------------
-#
-eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_NO_ENV_HINTS=1
-
-# --------------------------------- COMPLETION ---------------------------------
-#
-# Bash
-[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+eval "$(starship init bash)"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # --------------------------------- ALIASES ------------------------------------
 #
@@ -46,7 +56,7 @@ command -v bat >/dev/null &&
     alias less='bat'
 
 # Sourcing
-alias sbash='source ~/.bash_profile'
+alias sbash='source ~/.bashrc'
 alias sv='source ./.venv/bin/activate'
 
 # Git
@@ -68,11 +78,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias vi='nvim'
-alias vbash='nvim ~/.bash_profile'
+alias vbash='nvim ~/.bashrc'
 alias tocb='xclip -selection clipboard'
 alias a='./a.out'
-
-alias pu='brew update && brew upgrade && brew cu -ay'
 
 # --------------------------------- FUNCTIONS ----------------------------------
 #
@@ -83,9 +91,9 @@ mkcd() {
 }
 
 # --------------------------------- SOFTWARES ----------------------------------
-
+#
 # Jetbrains Toolbox App
-export PATH="$PATH:/Users/thib/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 #Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -93,10 +101,19 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 #NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+# Install manually via the script provided in the readme
+export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 #Jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+# ----------------------------------- IMPORTS ----------------------------------
+#
+# BWI
+[[ -r ~/.bwirc ]] && . ~/.bwirc
+
+# EPITA
+[[ -r ~/.epitarc ]] && . ~/.epitarc

@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # --------------------------------- SHELL CONFIG -------------------------------
-# Sets editing mode
+# Sets vi editing mode
 # set -o vi
 
 # Pager and editor
@@ -114,6 +114,20 @@ export RANGER_LOAD_DEFAULT_RC=false
 
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+
+# FZF
+eval "$(fzf --bash)"
+export FZF_COLORS=" \
+--color=bg+:#484f58,bg:-1,spinner:#f85149,hl:#d2a8ff \
+--color=fg:#c9d1d9,header:#f0883e,info:#a5d6ff,pointer:#f85149 \
+--color=marker:#7ee787,fg+:#c9d1d9,prompt:#79c0ff,hl+:#d2a8ff \
+--color=selected-bg:#30363d \
+--multi --no-bold "
+export FZF_DEFAULT_OPTS="$FZF_COLORS"
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always --line-range=:250 {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

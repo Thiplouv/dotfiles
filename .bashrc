@@ -40,9 +40,11 @@ complete -cf doas
 #
 # LS
 command -v lsd >/dev/null &&
-    alias ll='lsd -lhF --color=auto --oneline --group-dirs first' &&
-    alias la='lsd -lhFA --color=auto --oneline --group-dirs first' &&
+    alias ls="lsd" &&
     alias tree='lsd --tree'
+
+alias ll='ls -lhF'
+alias la='ls -lhFA'
 
 # CAT & LESS
 command -v bat >/dev/null &&

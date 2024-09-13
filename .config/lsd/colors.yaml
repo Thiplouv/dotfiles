@@ -1,0 +1,38 @@
+user: 230                  # Light gray based on "#e1e4e8"
+group: 187                 # Soft gray based on "#d1d5da"
+permission:
+  read: dark_green         # "#28a745"
+  write: dark_yellow       # "#ffd33d" approximated to a dark yellow
+  exec: dark_red           # "#ea4a5a"
+  exec-sticky: 5           # Using a medium gray
+  no-access: 245           # Dark gray based on "#6a737d"
+  octal: 6                 # A darker variant of the active colors
+  acl: dark_cyan           # "#4EC9B0" approximated to dark cyan
+  context: cyan            # "#79b8ff" approximated to cyan
+date:
+  hour-old: 40             # Approximated to fit the color theme, slight blue tint
+  day-old: 42              # Slightly older blue-green shade
+  older: 36                # Darker green/blue shade
+size:
+  none: 245                # Dark gray based on "#6a737d"
+  small: 229               # Lighter gray based on text foreground
+  medium: 216              # Approximated lighter gray for better contrast
+  large: 172               # Darker orange/green hue
+inode:
+  valid: 13                # Light green "#28a745" approximated to terminal color
+  invalid: 245             # Dark gray "#6a737d"
+links:
+  valid: 13                # Light green "#28a745"
+  invalid: 245             # Dark gray "#6a737d"
+tree-edge: 245             # Dark gray "#6a737d"
+git-status:
+  default: 245             # Dark gray "#6a737d"
+  unmodified: 245          # Dark gray "#6a737d"
+  ignored: 245             # Dark gray "#6a737d"
+  new-in-index: dark_green # "#34d058"
+  new-in-workdir: dark_green # "#34d058"
+  typechange: dark_yellow  # "#ffd33d"
+  deleted: dark_red        # "#ea4a5a"
+  renamed: dark_green      # "#34d058"
+  modified: dark_yellow    # "#ffd33d"
+  conflicted: dark_red     # "#ea4a5a"

@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# ------------------------------------- MacOS ----------------------------------
+# ------------------------------- OS SPECIFIC ----------------------------------
 #
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Homebrew
@@ -93,7 +93,7 @@ mkcd() {
 # --------------------------------- SOFTWARES ----------------------------------
 #
 # Jetbrains Toolbox App
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:$XDG_DATA_HOME/JetBrains/Toolbox/scripts"
 
 #Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -102,7 +102,7 @@ eval "$(pyenv init -)"
 
 #NVM
 # Install manually via the script provided in the readme
-export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
@@ -113,7 +113,7 @@ eval "$(jenv init -)"
 # ----------------------------------- IMPORTS ----------------------------------
 #
 # BWI
-[[ -r ~/.bwirc ]] && . ~/.bwirc
+[[ -r $HOME/.bwirc ]] && . $HOME/.bwirc
 
 # EPITA
-[[ -r ~/.epitarc ]] && . ~/.epitarc
+[[ -r $HOME/.epitarc ]] && . $HOME/.epitarc

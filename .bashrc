@@ -11,6 +11,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Homebrew
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export HOMEBREW_NO_ENV_HINTS=1
+    export BASH_SILENCE_DEPRECATION_WARNING=1
 
     # For some reason this is needed:
     export PATH="/usr/local/bin:$PATH"
@@ -113,7 +114,7 @@ eval "$(jenv init -)"
 # ----------------------------------- IMPORTS ----------------------------------
 #
 # BWI
-[[ -r $HOME/.bwirc ]] && . $HOME/.bwirc
+[[ -r $HOME/.bwirc ]] && source $HOME/.bwirc
 
 # EPITA
-[[ -r $HOME/.epitarc ]] && . $HOME/.epitarc
+[[ -r $HOME/.epitarc ]] && source $HOME/.epitarc

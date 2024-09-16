@@ -8,21 +8,32 @@ import = [
 live_config_reload = true
 
 [shell]
+# macOS
 program = "/opt/homebrew/bin/bash"
+
+# Linux
+# program = "/bin/bash"
 
 [env]
 TERM = "xterm-256color"
 
 [window]
+# macOS
 decorations     = "Buttonless"
+blur            = false
+option_as_alt   = "Both"
+
+# Linux
+# decorations     = "None"
+
+# Both
 dynamic_padding = false
 dynamic_title   = true
 opacity         = 0.8
-blur            = false
 startup_mode    = "Maximized"
 title           = "Alacritty"
 padding         = {x = 10, y = 5}
-option_as_alt   = "Both"
+decorations_theme_variant = "Dark"
 
 [scrolling]
 history = 5000

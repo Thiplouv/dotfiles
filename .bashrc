@@ -122,7 +122,6 @@ alias gst='git stash push -m'
 alias vi='nvim'
 alias vbash='nvim ~/.bashrc'
 alias w='watch -tn 1 '
-alias grep='rg'
 alias diff='diff --color=auto'
 alias imgcat='wezterm imgcat'
 
@@ -162,7 +161,24 @@ command -v gdb >/dev/null &&
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Ripgrep
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+command -v rg >/dev/null &&
+    alias grep='rg' &&
+    export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+
+# FZF
+which fzf >/dev/null 2>&1 &&
+    eval "$(fzf --bash)" &&
+    export FZF_COLORS=" \
+        --color=bg+:#484f58,bg:-1,spinner:#f85149,hl:#d2a8ff \
+        --color=fg:#c9d1d9,header:#f0883e,info:#a5d6ff,pointer:#f85149 \
+        --color=marker:#7ee787,fg+:#c9d1d9,prompt:#79c0ff,hl+:#d2a8ff \
+        --color=selected-bg:#30363d \
+        --multi --no-bold " &&
+    export FZF_DEFAULT_OPTS="$FZF_COLORS" &&
+    export FZF_CTRL_T_OPTS="
+        --walker-skip .git,node_modules,target
+        --preview 'bat -n --color=always --line-range=:250 {}'
+        --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 #Jenv
 command -v jenv >/dev/null &&

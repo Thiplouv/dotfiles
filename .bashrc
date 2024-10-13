@@ -17,6 +17,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Brew bash completion
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 
+    # Clipboard management
+    alias copy='pbcopy'
+
     # Update aliases
     command -v brew >/dev/null &&
         alias pu='brew update && brew upgrade && brew cu -ay'
@@ -28,6 +31,12 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     [ $(lspci | grep -qi 'intel' && echo 1 || echo 0) -eq 1 ] &&
         export LIBVA_DRIVER_NAME=iHD &&
         export VDPAU_DRIVER=va_gl
+
+    # Brightness management
+    alias brightness='xrandr --output eDP-1 --brightness'
+
+    # Clipboard management
+    alias copy='xclip -selection clipboard'
 
     # Archlinux update aliases
     command -v yay >/dev/null &&
@@ -110,14 +119,12 @@ alias grm='git rebase master'
 alias gst='git stash push -m'
 
 # Others
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias diff='diff --color=auto'
 alias vi='nvim'
 alias vbash='nvim ~/.bashrc'
-alias tocb='xclip -selection clipboard'
-alias a='./a.out'
+alias w='watch -tn 1 '
+alias grep='rg'
+alias diff='diff --color=auto'
+alias imgcat='wezterm imgcat'
 
 # --------------------------------- FUNCTIONS ----------------------------------
 #
@@ -134,6 +141,10 @@ command -v doas >/dev/null &&
     alias sudo='doas' &&
     alias sudoedit='doas rnano' &&
     complete -cf doas
+
+# GDB
+command -v gdb >/dev/null &&
+    alias gdb='gdb -q'
 
 # Jetbrains Toolbox App
 [[ -d $XDG_DATA_HOME/JetBrains/Toolbox ]] &&

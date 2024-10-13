@@ -115,25 +115,30 @@ mkcd() {
 # --------------------------------- SOFTWARES ----------------------------------
 #
 # Jetbrains Toolbox App
-export PATH="$PATH:$XDG_DATA_HOME/JetBrains/Toolbox/scripts"
+[[ -d $XDG_DATA_HOME/JetBrains/Toolbox ]] &&
+    export PATH="$PATH:$XDG_DATA_HOME/JetBrains/Toolbox/scripts"
 
 #Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PATH:$PYENV_ROOT/bin"
-eval "$(pyenv init -)"
+[[ -d $HOME/.pyenv ]] && export PYENV_ROOT="$HOME/.pyenv" &&
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PATH:$PYENV_ROOT/bin" &&
+    eval "$(pyenv init -)"
 
 #NVM
 # Install manually via the script provided in the readme
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[[ -d $HOME/.nvm ]] && export NVM_DIR="$HOME/.nvm" &&
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 #Jenv
-export PATH="$PATH:$HOME/.jenv/bin"
-eval "$(jenv init -)"
+command -v jenv >/dev/null &&
+    eval "$(jenv init -)"
+
+# Orbstack
+[[ -d $HOME/.orbstack/ ]] && source $HOME/.orbstack/shell/init.bash 2>/dev/null || :
 
 # Exegol
-alias exegol='sudo -E $(which exegol)'
+command -v exegol >/dev/null &&
+    alias exegol='sudo -E $(which exegol)'
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

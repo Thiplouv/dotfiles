@@ -13,9 +13,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_NO_ENV_HINTS=1
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # For some reason this is needed:
-    export PATH="/usr/local/bin:$PATH"
-
     # Brew bash completion
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 
@@ -35,7 +32,19 @@ command -v apt >/dev/null &&
     alias pu='sudo apt update && sudo apt upgrade -y' &&
     alias pr='sudo apt autoremove'
 
+# ------------------------------- PATH -----------------------------------------
+#
+# Inlcudes path common to multiple programs
+# NOTE: Please remember to always add at the end of $PATH
+
+# $HOME/.local/bin/
+[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$PATH:$HOME/.local/bin"
+
+# /usr/local/bin/
+[[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="$PATH:/usr/local/bin"
+
 # --------------------------------- SHELL CONFIG -------------------------------
+#
 # Pager and editor
 export EDITOR=nvim
 
@@ -110,7 +119,7 @@ export PATH="$PATH:$XDG_DATA_HOME/JetBrains/Toolbox/scripts"
 
 #Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 
 #NVM
@@ -120,11 +129,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 #Jenv
-export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="$PATH:$HOME/.jenv/bin"
 eval "$(jenv init -)"
 
 # Exegol
-export PATH="$PATH:/Users/thib/.local/bin"
 alias exegol='sudo -E $(which exegol)'
 
 # ----------------------------------- IMPORTS ----------------------------------

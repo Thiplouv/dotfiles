@@ -129,6 +129,12 @@ mkcd() {
 
 # --------------------------------- SOFTWARES ----------------------------------
 #
+# Doas
+command -v doas >/dev/null &&
+    alias sudo='doas' &&
+    alias sudoedit='doas rnano' &&
+    complete -cf doas
+
 # Jetbrains Toolbox App
 [[ -d $XDG_DATA_HOME/JetBrains/Toolbox ]] &&
     export PATH="$PATH:$XDG_DATA_HOME/JetBrains/Toolbox/scripts"

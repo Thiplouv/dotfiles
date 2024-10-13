@@ -15,10 +15,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # Brew bash completion
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-
-    # Updates
-    alias pu='brew update && brew upgrade && brew cu -ay'
 fi
+
+# MacOS
+command -v brew >/dev/null &&
+    alias pu='brew update && brew upgrade && brew cu -ay'
 
 # Archlinux distros
 command -v yay >/dev/null &&

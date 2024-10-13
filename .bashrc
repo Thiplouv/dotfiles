@@ -47,7 +47,11 @@ command -v apt >/dev/null &&
 # --------------------------------- SHELL CONFIG -------------------------------
 #
 # Pager and editor
+export VISUAL=nvim
 export EDITOR=nvim
+export PAGER="less"
+export MANPAGER="sh -c 'col -bx | bat --theme=base16-2 -l man -p'"
+export MANROFFOPT="-c"
 
 # XDG variables (from Arch wiki)
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -67,16 +71,17 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 # --------------------------------- ALIASES ------------------------------------
 #
 # LS
-alias ll='lsd -lhF --color=auto --oneline --group-dirs first'
-alias la='lsd -lhFA --color=auto --oneline --group-dirs first'
-alias tree='lsd --tree'
+command -v lsd >/dev/null &&
+    alias ls="lsd" &&
+    alias tree='lsd --tree'
+
+alias ll='ls -lhF'
+alias la='ls -lhFA'
 
 # CAT & LESS
-export BAT_THEME="github-dark-hc"
 command -v bat >/dev/null &&
-    alias cat='bat --style=header-filename,header-filesize,rule,snip' &&
-    alias batcat='bat --pager=never' &&
-    alias less='bat'
+    alias cat='bat' &&
+    alias less='bat -p --paging=always'
 
 # Sourcing
 alias sbash='source ~/.bashrc'

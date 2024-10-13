@@ -23,6 +23,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias pu='brew update && brew upgrade && brew cu -ay'
 fi
 
+# Archlinux distros
+command -v yay >/dev/null &&
+    alias pi='yay --needed -S' &&
+    alias pu='yay --needed -Syu' &&
+    alias pr='yay -Rcns'
+
+# Ubuntu distros
+command -v apt >/dev/null &&
+    alias pi='sudo apt install' &&
+    alias pu='sudo apt update && sudo apt upgrade -y' &&
+    alias pr='sudo apt autoremove'
+
 # --------------------------------- SHELL CONFIG -------------------------------
 # Pager and editor
 export EDITOR=nvim
@@ -110,6 +122,10 @@ export NVM_DIR="$HOME/.nvm"
 #Jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+# Exegol
+export PATH="$PATH:/Users/thib/.local/bin"
+alias exegol='sudo -E $(which exegol)'
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

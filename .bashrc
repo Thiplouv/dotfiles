@@ -7,6 +7,7 @@
 
 # ------------------------------- OS SPECIFIC ----------------------------------
 #
+# MacOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Homebrew
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -15,23 +16,31 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # Brew bash completion
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+
+    # Update aliases
+    command -v brew >/dev/null &&
+        alias pu='brew update && brew upgrade && brew cu -ay'
 fi
 
-# MacOS
-command -v brew >/dev/null &&
-    alias pu='brew update && brew upgrade && brew cu -ay'
+# Linux
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # Intel graphics
+    [ $(lspci | grep -qi 'intel' && echo 1 || echo 0) -eq 1 ] &&
+        export LIBVA_DRIVER_NAME=iHD &&
+        export VDPAU_DRIVER=va_gl
 
-# Archlinux distros
-command -v yay >/dev/null &&
-    alias pi='yay --needed -S' &&
-    alias pu='yay --needed -Syu' &&
-    alias pr='yay -Rcns'
+    # Archlinux update aliases
+    command -v yay >/dev/null &&
+        alias pi='yay --needed -S' &&
+        alias pu='yay --needed -Syu' &&
+        alias pr='yay -Rcns'
 
-# Ubuntu distros
-command -v apt >/dev/null &&
-    alias pi='sudo apt install' &&
-    alias pu='sudo apt update && sudo apt upgrade -y' &&
-    alias pr='sudo apt autoremove'
+    # Ubuntu update aliases
+    command -v apt >/dev/null &&
+        alias pi='sudo apt install' &&
+        alias pu='sudo apt update && sudo apt upgrade -y' &&
+        alias pr='sudo apt autoremove'
+fi
 
 # ------------------------------- PATH -----------------------------------------
 #

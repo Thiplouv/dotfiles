@@ -36,15 +36,6 @@ config.command_palette_font_size = 18.0
 config.command_palette_bg_color = "#0a0c10"
 config.command_palette_fg_color = "#f0f3f6"
 
--- Multiplexer
-config.unix_domains = {
-	{
-		name = "unix",
-	},
-}
-
-config.default_gui_startup_args = { "connect", "unix" }
-
 -- Tab Bar
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
@@ -210,24 +201,6 @@ wezterm.on("augment-command-palette", function(window, pane)
 			}),
 		},
 	}
-end)
-
--- Attempts to open Wezterm maximized
-wezterm.on("gui-startup", function(cmd)
-	-- Pick the active screen to maximize into, there are also other options, see the docs.
-	local active = wezterm.gui.screens().active
-
-	-- Set the window coords on spawn.
-	local tab, pane, window = mux.spawn_window(cmd or {
-		x = active.x,
-		y = active.y,
-		width = active.width,
-		height = active.height,
-	})
-
-	-- You probably don't need both, but you can also set the positions after spawn.
-	window:gui_window():set_position(active.x, active.y)
-	window:gui_window():set_inner_size(active.width, active.height)
 end)
 
 return config

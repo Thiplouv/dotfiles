@@ -153,6 +153,9 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.CloseCurrentPane({ confirm = false }),
 	},
+	-- Moves Tab
+	{ key = ",", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
+	{ key = ".", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
 }
 
 -- Multiple keys shortcuts

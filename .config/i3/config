@@ -1,0 +1,168 @@
+# i3 Configuration for Thiplouv
+
+# -------------------------------- Settings ------------------------------------
+# Mod key
+set $mod Mod4
+
+# Windows title
+font pango:SF Pro Display 14
+for_window [class="^.*"] border pixel 0
+gaps inner 10
+
+# Workspaces name
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# i3Bar
+bar {
+        i3bar_command i3bar
+        status_command i3status
+        position top
+        output primary
+        tray_output primary
+        font pango:SF Pro Display 14
+        separator_symbol "  "
+        colors {
+            background #000000CC
+            statusline #ffffff
+            separator #ffffff
+
+            focused_workspace  #000000 #000000 #ffffff
+            active_workspace   #000000 #000000 #ffffff
+            inactive_workspace #000000 #000000 #777777
+            urgent_workspace   #000000 #900000 #ffffff
+            binding_mode       #000000 #900000 #ffffff
+        }
+}
+
+# ----------------------------- Startup Programs -------------------------------
+# Compfy
+exec_always --no-startup-id compfy -b
+
+# .desktop entries
+exec --no-startup-id dex --autostart --environment i3
+
+# Feh
+exec --no-startup-id ~/.fehbg &
+
+# Redshift
+# exec --no-startup-id redshift
+
+# Lock Screen
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -e -f -k -c 000000
+
+# NetworkManager applet
+exec --no-startup-id nm-applet
+
+# ---------------------------------- Spaces ------------------------------------
+# Focus
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# --------------------------------- Windows ------------------------------------
+# Kill
+bindsym $mod+q kill
+
+# Focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Resize
+bindsym $mod+r mode "resize_window"
+mode "resize_window" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # Exit resize mode 
+        bindsym Escape mode "default"
+}
+
+# --------------------------------- Hotkeys ------------------------------------
+# Screenshots
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+
+# Lock screen
+bindsym Mod1+Shift+l exec --no-startup-id xset s activate
+
+# Launcher
+bindcode $mod+61 exec "rofi -modi drun,run -show drun"
+
+# split in horizontal orientation
+#bindsym $mod+h split h
+
+# split in vertical orientation
+#bindsym $mod+v split v
+
+# Reload config file
+bindsym $mod+Shift+c reload
+
+# Restart i3
+bindsym $mod+Shift+r restart
+
+# Log out
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# Volume
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Sreen brightness
+bindsym XF86MonBrightnessUp exec light -A 20 
+bindsym XF86MonBrightnessDown exec light -U 20
+
+# -------------------------------- Launchers -----------------------------------
+bindsym $mod+Return exec wezterm
+

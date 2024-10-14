@@ -86,6 +86,12 @@ export XDG_CONFIG_DIRS="/etc/xdg"
 eval "$(starship init bash)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
+# History
+export HISTFILE=~/.history
+export HISTSIZE=25000
+export SAVEHIST=25000
+export HISTCONTROL=ignorespace
+
 # --------------------------------- ALIASES ------------------------------------
 #
 # LS

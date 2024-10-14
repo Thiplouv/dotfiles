@@ -1,62 +1,70 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
-  "schemes" : [
-    {
-      "if" : {
-        "device" : {
-          "productID" : "0xc094",
-          "category" : "mouse",
-          "productName" : "PRO X Wireless",
-          "vendorID" : "0x46d",
-          "serialNumber" : "2609747D"
+    "$schema": "https:\/\/schema.linearmouse.app\/0.10.0",
+    "schemes": [
+        {
+            "if": {
+                "device": {
+                    "productID": "0xc094",
+                    "vendorID": "0x46d",
+                    "category": "mouse",
+                    "serialNumber": "2609747D",
+                    "productName": "PRO X Wireless"
+                }
+            },
+            "scrolling": {
+                "acceleration": {
+                    "vertical": 2
+                },
+                "distance": {
+                    "vertical": "auto"
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "speed": {
+                    "vertical": 50,
+                    "horizontal": 0
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1
+            },
+            "buttons": {
+                "universalBackForward": true
+            }
+        },
+        {
+            "if": {
+                "device": {
+                    "productID": "0xc547",
+                    "vendorID": "0x46d",
+                    "productName": "USB Receiver",
+                    "category": "mouse"
+                }
+            },
+            "scrolling": {
+                "acceleration": {
+                    "vertical": 2
+                },
+                "distance": {
+                    "vertical": "auto"
+                },
+                "reverse": {
+                    "vertical": true
+                },
+                "speed": {
+                    "vertical": 50,
+                    "horizontal": 0
+                }
+            },
+            "pointer": {
+                "disableAcceleration": true,
+                "acceleration": 1
+            },
+            "buttons": {
+                "universalBackForward": true
+            }
         }
-      },
-      "scrolling" : {
-        "speed" : {
-          "vertical" : 0
-        },
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "distance" : {
-          "vertical" : 3
-        },
-        "reverse" : {
-          "vertical" : true
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1
-      }
-    },
-    {
-      "scrolling" : {
-        "speed" : {
-          "vertical" : 0
-        },
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "reverse" : {
-          "vertical" : true
-        },
-        "distance" : {
-          "vertical" : 3
-        }
-      },
-      "if" : {
-        "device" : {
-          "vendorID" : "0x46d",
-          "productID" : "0xc547",
-          "productName" : "USB Receiver",
-          "category" : "mouse"
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1
-      }
-    }
-  ]
+    ]
 }

@@ -135,7 +135,7 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym Mod1+Shift+l exec --no-startup-id xset s activate
 
 # Launcher
-bindcode $mod+61 exec "rofi -modi drun,run -show drun"
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
 
 # split in horizontal orientation
 #bindsym $mod+h split h

@@ -197,6 +197,9 @@ command -v jenv >/dev/null &&
 command -v exegol >/dev/null &&
     alias exegol='sudo -E $(which exegol)'
 
+# Rust (via rustup)
+[[ -d $HOME/.cargo/bin/ ]] && export PATH="$PATH:$HOME/.cargo/bin/"
+
 # ----------------------------------- IMPORTS ----------------------------------
 #
 # BWI

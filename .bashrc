@@ -38,6 +38,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Clipboard management
     alias copy='xclip -selection clipboard'
 
+    # US International quick switch
+    alias us='setxkbmap -layout us -variant intl'
+
     # Archlinux update aliases
     command -v yay >/dev/null &&
         alias pi='yay --needed -S' &&

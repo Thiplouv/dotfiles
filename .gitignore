@@ -11,3 +11,6 @@
 
 # Env variables
 *.env
+
+# Temporary files
+tmp/

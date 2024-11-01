@@ -50,7 +50,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Ubuntu update aliases
     command -v apt >/dev/null &&
         alias pi='sudo apt install' &&
-        alias pu='sudo apt update && sudo apt upgrade -y' &&
+        alias pu='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y' &&
         alias pr='sudo apt autoremove'
 fi
 

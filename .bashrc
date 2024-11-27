@@ -45,7 +45,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     command -v yay >/dev/null &&
         alias pi='yay --needed -S' &&
         alias pu='yay --needed -Syu' &&
-        alias pr='yay -Rcns'
+        alias pr='yay -Rcn'
 
     # Ubuntu update aliases
     command -v apt >/dev/null &&

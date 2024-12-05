@@ -213,6 +213,10 @@ command -v exegol >/dev/null &&
 # Rust (via rustup)
 [[ -d $HOME/.cargo/bin/ ]] && append_path "$HOME/.cargo/bin/"
 
+# Go
+export GOPATH="$HOME/go"
+export GOBIN="$HOME/.local/bin"
+
 # ----------------------------------- IMPORTS ----------------------------------
 #
 # BWI

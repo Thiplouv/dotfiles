@@ -56,14 +56,24 @@ fi
 
 # ------------------------------- PATH -----------------------------------------
 #
-# Inlcudes path common to multiple programs
-# NOTE: Please remember to always add at the end of $PATH
+# PATH User Settings
+# NOTE: PATH is first populated by /etc/profile and /etc/profile.d/
 
-# $HOME/.local/bin/
-[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$PATH:$HOME/.local/bin"
+# Imported from /etc/profile
+append_path() {
+    case ":$PATH:" in
+    *:"$1":*) ;;
+    *)
+        PATH="${PATH:+$PATH:}$1"
+        ;;
+    esac
+}
+
+# ~/.local/bin/
+append_path "$HOME/.local/bin"
 
 # /usr/local/bin/
-[[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="$PATH:/usr/local/bin"
+append_path "/usr/local/bin"
 
 # --------------------------------- SHELL CONFIG -------------------------------
 #
@@ -156,11 +166,11 @@ command -v gdb >/dev/null &&
 
 # Jetbrains Toolbox App
 [[ -d $XDG_DATA_HOME/JetBrains/Toolbox ]] &&
-    export PATH="$PATH:$XDG_DATA_HOME/JetBrains/Toolbox/scripts"
+    append_path "$XDG_DATA_HOME/JetBrains/Toolbox/scripts"
 
 #Pyenv
 [[ -d $HOME/.pyenv ]] && export PYENV_ROOT="$HOME/.pyenv" &&
-    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PATH:$PYENV_ROOT/bin" &&
+    [[ -d $PYENV_ROOT/bin ]] && append_path "$PYENV_ROOT/bin" &&
     eval "$(pyenv init -)"
 
 #NVM
@@ -201,7 +211,7 @@ command -v exegol >/dev/null &&
     alias exegol='sudo -E $(which exegol)'
 
 # Rust (via rustup)
-[[ -d $HOME/.cargo/bin/ ]] && export PATH="$PATH:$HOME/.cargo/bin/"
+[[ -d $HOME/.cargo/bin/ ]] && append_path "$HOME/.cargo/bin/"
 
 # ----------------------------------- IMPORTS ----------------------------------
 #
@@ -210,3 +220,7 @@ command -v exegol >/dev/null &&
 
 # EPITA
 [[ -r $HOME/.epitarc ]] && source $HOME/.epitarc
+
+# ------------------------------------- EOF ------------------------------------
+# Imported from /etc/profile
+unset -f append_path

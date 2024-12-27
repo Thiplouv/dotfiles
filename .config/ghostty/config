@@ -39,8 +39,10 @@ window-title-font-family = "SF Pro Display"
 font-style = "Medium"
 font-size = 16
 
+gtk-adwaita = "true"
 gtk-tabs-location = "bottom"
 gtk-wide-tabs = "false"
+adw-toolbar-style = "raised-border"
 
 # Tabs
 window-new-tab-position = "current"

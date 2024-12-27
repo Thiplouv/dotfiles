@@ -1,3 +1,4 @@
+# Ghostty configuration for Thiplouv
 
 # General
 term = "xterm-256color"
@@ -28,6 +29,7 @@ cursor-style = "bar"
 
 # Font
 font-family = "Liga SFMono Nerd Font"
+font-style = "Medium"
 font-size = 16
 
 gtk-tabs-location = "bottom"

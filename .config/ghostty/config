@@ -1,0 +1,38 @@
+
+# General
+term = "xterm-256color"
+command = "/bin/bash"
+auto-update = "off"
+desktop-notifications = "false"
+confirm-close-surface = "false"
+quit-after-last-window-closed = "true"
+shell-integration = "bash"
+macos-option-as-alt = "left"
+
+# Window
+# macos-titlebar-style = hidden
+window-decoration = "false"
+window-padding-x = 10
+window-padding-y = 10, 0
+background-opacity = 0.80
+theme = "github-dark-hc"
+window-colorspace = "display-p3"
+window-vsync = "true"
+window-inherit-working-directory = "false"
+bold-is-bright = "true"
+
+resize-overlay = "never"
+
+# Cursor
+cursor-style = "bar"
+
+# Font
+font-family = "Liga SFMono Nerd Font"
+font-size = 16
+
+gtk-tabs-location = "bottom"
+gtk-wide-tabs = "false"
+
+# Tabs
+window-new-tab-position = "current"
+

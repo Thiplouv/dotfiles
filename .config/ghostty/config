@@ -7,7 +7,7 @@ auto-update = "off"
 desktop-notifications = "false"
 confirm-close-surface = "false"
 quit-after-last-window-closed = "true"
-shell-integration = "bash"
+shell-integration = "detect"
 macos-option-as-alt = "left"
 
 # Window
@@ -26,9 +26,16 @@ resize-overlay = "never"
 
 # Cursor
 cursor-style = "bar"
+adjust-cursor-thickness = 1
+cursor-style-blink = ""
+
+mouse-hide-while-typing = "true"
+
+clipboard-trim-trailing-spaces = "true"
 
 # Font
 font-family = "Liga SFMono Nerd Font"
+window-title-font-family = "SF Pro Display"
 font-style = "Medium"
 font-size = 16
 

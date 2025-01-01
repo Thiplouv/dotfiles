@@ -107,6 +107,10 @@ export HISTCONTROL=ignorespace
 
 # --------------------------------- ALIASES ------------------------------------
 #
+# Python alias
+command -v python3 >/dev/null &&
+    alias python='python3'
+
 # LS
 command -v lsd >/dev/null &&
     alias ls="lsd" &&

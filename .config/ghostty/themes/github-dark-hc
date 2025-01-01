@@ -20,3 +20,5 @@ foreground = f0f3f6
 cursor-color = f0f3f6
 selection-background = 204670
 selection-foreground = f0f3f6
+window-titlebar-background = 0a0c10
+window-titlebar-foreground = f0f3f6

@@ -164,5 +164,5 @@ bindsym XF86MonBrightnessUp exec light -A 20
 bindsym XF86MonBrightnessDown exec light -U 20
 
 # -------------------------------- Launchers -----------------------------------
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec ghostty
 

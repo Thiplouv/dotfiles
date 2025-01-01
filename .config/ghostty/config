@@ -1,5 +1,11 @@
 # Ghostty configuration for Thiplouv
 
+# Loads keybinds file if exists
+config-file = ?keybinds
+
+# Loads macOS config file if exists
+config-file = ?macos-config
+
 # General
 term = "xterm-256color"
 command = "/bin/bash"
@@ -8,10 +14,9 @@ desktop-notifications = "false"
 confirm-close-surface = "false"
 quit-after-last-window-closed = "true"
 shell-integration = "detect"
-macos-option-as-alt = "left"
+title = " "
 
 # Window
-# macos-titlebar-style = hidden
 window-decoration = "false"
 window-padding-x = 10
 window-padding-y = 10, 0

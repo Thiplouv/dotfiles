@@ -1,0 +1,7 @@
+# Ghostty macOS configuration for Thiplouv
+
+command = "/opt/homebrew/bin/bash"
+macos-titlebar-style = tabs
+window-decoration = "true"
+macos-option-as-alt = "left"
+font-size = 18

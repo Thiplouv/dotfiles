@@ -14,7 +14,6 @@ desktop-notifications = "false"
 confirm-close-surface = "false"
 quit-after-last-window-closed = "true"
 shell-integration = "detect"
-title = " "
 
 # Window
 window-decoration = "false"
@@ -45,8 +44,8 @@ font-style = "Medium"
 font-size = 16
 
 gtk-adwaita = "true"
-gtk-tabs-location = "bottom"
-gtk-wide-tabs = "false"
+gtk-tabs-location = "top"
+gtk-wide-tabs = "true"
 adw-toolbar-style = "raised-border"
 
 # Tabs

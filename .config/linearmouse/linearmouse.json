@@ -4,12 +4,16 @@
         {
             "if": {
                 "device": {
-                    "productID": "0xc094",
-                    "vendorID": "0x46d",
+                    "productName": "PRO X Wireless",
                     "category": "mouse",
+                    "productID": "0xc094",
                     "serialNumber": "2609747D",
-                    "productName": "PRO X Wireless"
+                    "vendorID": "0x46d"
                 }
+            },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
             },
             "scrolling": {
                 "acceleration": {
@@ -18,17 +22,13 @@
                 "distance": {
                     "vertical": "auto"
                 },
-                "reverse": {
-                    "vertical": true
-                },
                 "speed": {
                     "vertical": 50,
                     "horizontal": 0
+                },
+                "reverse": {
+                    "vertical": true
                 }
-            },
-            "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1
             },
             "buttons": {
                 "universalBackForward": true
@@ -37,11 +37,15 @@
         {
             "if": {
                 "device": {
-                    "productID": "0xc547",
                     "vendorID": "0x46d",
+                    "category": "mouse",
                     "productName": "USB Receiver",
-                    "category": "mouse"
+                    "productID": "0xc547"
                 }
+            },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
             },
             "scrolling": {
                 "acceleration": {
@@ -50,17 +54,79 @@
                 "distance": {
                     "vertical": "auto"
                 },
+                "speed": {
+                    "vertical": 50,
+                    "horizontal": 0
+                },
                 "reverse": {
                     "vertical": true
+                }
+            },
+            "buttons": {
+                "universalBackForward": true
+            }
+        },
+        {
+            "if": {
+                "device": {
+                    "productID": "0x100",
+                    "category": "mouse",
+                    "productName": "UltralightX dongle",
+                    "vendorID": "0x361d",
+                    "serialNumber": "C5DE098A53750634"
+                }
+            },
+            "pointer": {
+                "acceleration": 1,
+                "disableAcceleration": true
+            },
+            "scrolling": {
+                "acceleration": {
+                    "vertical": 2
+                },
+                "distance": {
+                    "vertical": "auto"
                 },
                 "speed": {
                     "vertical": 50,
                     "horizontal": 0
+                },
+                "reverse": {
+                    "vertical": true
+                }
+            },
+            "buttons": {
+                "universalBackForward": true
+            }
+        },
+        {
+            "if": {
+                "device": {
+                    "productID": "0x102",
+                    "productName": "UltralightX mouse",
+                    "serialNumber": "0000000000MA243507549 (E58C5B9A)",
+                    "category": "mouse",
+                    "vendorID": "0x361d"
                 }
             },
             "pointer": {
-                "disableAcceleration": true,
-                "acceleration": 1
+                "acceleration": 1,
+                "disableAcceleration": true
+            },
+            "scrolling": {
+                "acceleration": {
+                    "vertical": 2
+                },
+                "distance": {
+                    "vertical": "auto"
+                },
+                "speed": {
+                    "vertical": 50,
+                    "horizontal": 0
+                },
+                "reverse": {
+                    "vertical": true
+                }
             },
             "buttons": {
                 "universalBackForward": true

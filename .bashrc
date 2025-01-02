@@ -14,6 +14,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_NO_ENV_HINTS=1
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
+    # Prefers Linux man pages
+    alias man='gman'
+
     # Brew bash completion
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 

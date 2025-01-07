@@ -35,7 +35,9 @@ cursor-style-blink = ""
 
 mouse-hide-while-typing = "true"
 
+# Clipboard
 clipboard-trim-trailing-spaces = "true"
+copy-on-select = "true"
 
 # Font
 font-family = "Liga SFMono Nerd Font"

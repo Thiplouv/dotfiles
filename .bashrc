@@ -150,6 +150,7 @@ alias vbash='nvim ~/.bashrc'
 alias w='watch -tn 1 '
 alias diff='diff --color=auto'
 alias imgcat='wezterm imgcat'
+alias make='make clean; bear -- make'
 
 # --------------------------------- FUNCTIONS ----------------------------------
 #

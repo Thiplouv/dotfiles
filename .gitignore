@@ -13,4 +13,8 @@
 *.env
 
 # Temporary files
+.cache/
 tmp/
+
+# Compile commands for clangd in nvim
+compile_commands.json

@@ -84,6 +84,7 @@ append_path "/usr/local/bin"
 export VISUAL=nvim
 export EDITOR=nvim
 export PAGER="less"
+export BAT_PAGER="less -R"
 export MANPAGER="sh -c 'col -bx | bat --theme=base16-2 -l man -p'"
 export MANROFFOPT="-c"
 
@@ -124,8 +125,7 @@ alias la='ls -lhFA'
 
 # CAT & LESS
 command -v bat >/dev/null &&
-    alias cat='bat' &&
-    alias less='bat -p --paging=always'
+    alias cat='bat'
 
 # Sourcing
 alias sbash='source ~/.bashrc'
@@ -143,6 +143,7 @@ alias gpt='git push --follow-tags'
 alias gpr='git pull --rebase'
 alias grm='git rebase master'
 alias gst='git stash push -m'
+alias gm='git merge --no-commit --ff-only'
 
 # Others
 alias vi='nvim'
@@ -150,7 +151,7 @@ alias vbash='nvim ~/.bashrc'
 alias w='watch -tn 1 '
 alias diff='diff --color=auto'
 alias imgcat='wezterm imgcat'
-alias make='make clean; bear -- make'
+alias make='bear -- make'
 
 # --------------------------------- FUNCTIONS ----------------------------------
 #
@@ -193,6 +194,7 @@ command -v rg >/dev/null &&
     export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
 # FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 which fzf >/dev/null 2>&1 &&
     eval "$(fzf --bash)" &&
     export FZF_COLORS=" \

@@ -203,4 +203,6 @@ wezterm.on("augment-command-palette", function(window, pane)
 	}
 end)
 
+config.ssh_domains = wezterm.default_ssh_domains()
+
 return config

@@ -17,38 +17,3 @@ keybind = ctrl+shift+w=close_surface
 
 # Spawns new window
 keybind = ctrl+shift+n=new_window
-
-# --------------------------------- TABS ---------------------------------------
-# Spawning new tabs
-keybind = ctrl+shift+t=new_tab
-
-# Moves tabs
-keybind = ctrl+shift+comma=move_tab:-1
-keybind = ctrl+shift+period=move_tab:+1
-
-# Go to tabs
-keybind = ctrl+shift+1=goto_tab:1  
-keybind = ctrl+shift+2=goto_tab:2  
-keybind = ctrl+shift+3=goto_tab:3  
-keybind = ctrl+shift+4=goto_tab:4  
-keybind = ctrl+shift+5=goto_tab:5  
-keybind = ctrl+shift+6=goto_tab:6  
-keybind = ctrl+shift+7=goto_tab:7  
-keybind = ctrl+shift+8=goto_tab:8  
-keybind = ctrl+shift+9=goto_tab:9  
-keybind = ctrl+shift+0=goto_tab:10
-
-# ------------------------------- SPLITS ---------------------------------------
-# Spawns splits
-keybind = ctrl+shift+enter>h=new_split:left
-keybind = ctrl+shift+enter>j=new_split:up
-keybind = ctrl+shift+enter>k=new_split:down
-keybind = ctrl+shift+enter>l=new_split:right
-
-# Go to splits
-keybind = ctrl+shift+h=goto_split:left
-keybind = ctrl+shift+j=goto_split:top
-keybind = ctrl+shift+k=goto_split:bottom
-keybind = ctrl+shift+l=goto_split:right
-
-

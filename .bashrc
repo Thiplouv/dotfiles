@@ -25,7 +25,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # Update aliases
     command -v brew >/dev/null &&
-        alias pu='brew update && brew upgrade && brew cu -ay'
+        alias pu='brew cu -ay && brew upgrade'
 fi
 
 # Linux

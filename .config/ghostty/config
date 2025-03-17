@@ -8,7 +8,7 @@ config-file = ?macos-config
 
 # General
 term = "xterm-256color"
-command = "/bin/bash"
+command = "~/startmux.sh"
 auto-update = "off"
 desktop-notifications = "false"
 confirm-close-surface = "false"

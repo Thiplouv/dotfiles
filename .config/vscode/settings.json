@@ -1,0 +1,23 @@
+{
+    "workbench.colorTheme": "GitHub Dark Default",
+    "editor.fontFamily": "Liga SFMono Nerd Font",
+    "editor.fontSize": 16,
+    "window.zoomLevel": 0.5,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "github.copilot.enable": {
+        "*": false,
+    },
+    "chat.commandCenter.enabled": false,
+    "editor.guides.bracketPairs": true,
+    "workbench.activityBar.location": "top",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons",
+    "git.blame.editorDecoration.enabled": true,
+    "git.blame.statusBarItem.enabled": false,
+    "editor.formatOnSave": true,
+}

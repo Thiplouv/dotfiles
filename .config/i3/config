@@ -48,7 +48,7 @@ bar {
 
 # ----------------------------- Startup Programs -------------------------------
 # Compfy
-exec_always --no-startup-id compfy -b
+exec_always --no-startup-id picom -b
 
 # .desktop entries
 exec --no-startup-id dex --autostart --environment i3

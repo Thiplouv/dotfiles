@@ -53,8 +53,11 @@ exec_always --no-startup-id picom -b
 # .desktop entries
 exec --no-startup-id dex --autostart --environment i3
 
+# Gestures
+exec --no-startup-id libinput-gestures-setup start
+
 # Feh
-exec --no-startup-id ~/.fehbg &
+#exec --no-startup-id ~/.fehbg &
 
 # Redshift
 # exec --no-startup-id redshift

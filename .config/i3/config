@@ -47,6 +47,10 @@ bar {
 }
 
 # ----------------------------- Startup Programs -------------------------------
+
+# Polkit Agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 # Compfy
 exec_always --no-startup-id picom -b
 

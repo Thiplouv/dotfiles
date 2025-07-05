@@ -48,14 +48,23 @@ bar {
 
 # ----------------------------- Startup Programs -------------------------------
 
-# Tray Applet fix
-exec --no-startup-id snixembed
-
 # Polkit Agent
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Compfy
 exec_always --no-startup-id picom -b
+
+# Lock Screen
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -e -f -k -c 000000
+
+# Tray Applet fix
+exec --no-startup-id snixembed
+
+# NetworkManager applet
+exec --no-startup-id nm-applet
+
+# Bluetooth tray icon
+exec --no-startup-id blueman-applet
 
 # .desktop entries
 exec --no-startup-id dex --autostart --environment i3
@@ -74,15 +83,6 @@ exec --no-startup-id 1password
 
 # Insync
 exec --no-startup-id insync start
-
-# Bluetooth tray icon
-exec --no-startup-id blueman-applet
-
-# Lock Screen
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -e -f -k -c 000000
-
-# NetworkManager applet
-exec --no-startup-id nm-applet
 
 # Jetbrains Toolbox
 exec --no-startup-id jetbrains-toolbox

@@ -64,7 +64,16 @@ exec --no-startup-id libinput-gestures-setup start
 #exec --no-startup-id ~/.fehbg &
 
 # Redshift
-# exec --no-startup-id redshift
+exec --no-startup-id redshift
+
+# 1Password
+exec --no-startup-id 1password
+
+# Insync
+exec --no-startup-id insync start
+
+# Bluetooth tray icon
+exec --no-startup-id blueman-applet
 
 # Lock Screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -e -f -k -c 000000

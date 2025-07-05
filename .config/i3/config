@@ -48,6 +48,9 @@ bar {
 
 # ----------------------------- Startup Programs -------------------------------
 
+# Tray Applet fix
+exec --no-startup-id snixembed
+
 # Polkit Agent
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -80,6 +83,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -e -f -k -c 000
 
 # NetworkManager applet
 exec --no-startup-id nm-applet
+
+# Jetbrains Toolbox
+exec --no-startup-id jetbrains-toolbox
 
 # ---------------------------------- Spaces ------------------------------------
 # Focus

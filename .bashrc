@@ -55,6 +55,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         alias pi='sudo apt install' &&
         alias pu='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y' &&
         alias pr='sudo apt autoremove'
+
 fi
 
 # ------------------------------- PATH -----------------------------------------
@@ -77,6 +78,9 @@ append_path "$HOME/.local/bin"
 
 # /usr/local/bin/
 append_path "/usr/local/bin"
+
+# mysql-client
+[[ -d "/opt/homebrew/opt/mysql-client/bin/" ]] && append_path "/opt/homebrew/opt/mysql-client/bin"
 
 # --------------------------------- SHELL CONFIG -------------------------------
 #
@@ -111,10 +115,6 @@ export HISTCONTROL=ignorespace
 
 # --------------------------------- ALIASES ------------------------------------
 #
-# Python alias
-command -v python3 >/dev/null &&
-    alias python='python3'
-
 # LS
 command -v lsd >/dev/null &&
     alias ls="lsd" &&
@@ -130,6 +130,7 @@ command -v bat >/dev/null &&
 # Sourcing
 alias sbash='source ~/.bashrc'
 alias sv='source ./.venv/bin/activate'
+alias slab='source $HOME/.lab.env'
 
 # Git
 alias gs='git status'
@@ -144,6 +145,22 @@ alias gpr='git pull --rebase'
 alias grm='git rebase master'
 alias gst='git stash push -m'
 alias gm='git merge --no-commit --ff-only'
+
+# K8S
+alias k='kubectl'
+alias kgj='kubectl get jobs --sort-by=.metadata.creationTimestamp'
+alias kgcj='kubectl get cj --sort-by=.metadata.creationTimestamp'
+alias kgp='kubectl get pods --sort-by=.metadata.creationTimestamp'
+alias kda='kubectl delete all --all'
+alias kds='kubectl delete secrets --all'
+alias kl='kubectl logs -f'
+alias kkillpod='kubectl delete pods --grace-period=0 --force'
+alias ksuspendcj='kubectl patch cronjobs -p "{\"spec\" : {\"suspend\" : true }}"'
+alias kunsuspendcj='kubectl patch cronjobs -p "{\"spec\" : {\"suspend\" : false }}"'
+alias wpods='watch kubectl get pods'
+
+# OpenTofu
+alias tf='tofu'
 
 # Others
 alias vi='nvim'
@@ -179,8 +196,16 @@ command -v gdb >/dev/null &&
 
 #Pyenv
 [[ -d $HOME/.pyenv ]] && export PYENV_ROOT="$HOME/.pyenv" &&
-    [[ -d $PYENV_ROOT/bin ]] && append_path "$PYENV_ROOT/bin" &&
+    [[ -d $PYENV_ROOT/shims ]] && append_path "$PYENV_ROOT/shims" &&
     eval "$(pyenv init -)"
+
+# Python alias
+command -v python3 >/dev/null &&
+    alias python='python3'
+
+# Pip alias
+command -v pip3 >/dev/null &&
+    alias pip='pip3'
 
 #NVM
 # Install manually via the script provided in the readme
@@ -209,8 +234,12 @@ which fzf >/dev/null 2>&1 &&
         --preview 'bat -n --color=always --line-range=:250 {}'
         --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-#Jenv
+# Jenv
+# After Upgrade:
+# sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+# jenv add "$(/usr/libexec/java_home)"
 command -v jenv >/dev/null &&
+    append_path "$HOME/.jenv/bin" &&
     eval "$(jenv init -)"
 
 # Orbstack
@@ -226,6 +255,11 @@ command -v exegol >/dev/null &&
 # Go
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/.local/bin"
+
+# Kubectl
+command -v kubectl >/dev/null &&
+    source <(kubectl completion $(basename $SHELL)) &&
+    complete -F __start_kubectl k
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

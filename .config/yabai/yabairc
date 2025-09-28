@@ -39,7 +39,9 @@ yabai -m mouse_drop_action swap
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^WhatsApp$" manage=off
 yabai -m rule --add app="^CleanShot X$" manage=off
+yabai -m rule --add app="^Bear$" manage=off
 
 borders active_color=0x000000 inactive_color=0x000000 width=0.0 &
 

@@ -4,3 +4,5 @@ macos-titlebar-style = hidden
 window-decoration = "true"
 macos-option-as-alt = "left"
 font-size = 18
+mouse-scroll-multiplier = 1
+macos-icon = "xray"

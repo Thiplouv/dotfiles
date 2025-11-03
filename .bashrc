@@ -79,9 +79,6 @@ append_path "$HOME/.local/bin"
 # /usr/local/bin/
 append_path "/usr/local/bin"
 
-# mysql-client
-[[ -d "/opt/homebrew/opt/mysql-client/bin/" ]] && append_path "/opt/homebrew/opt/mysql-client/bin"
-
 # --------------------------------- SHELL CONFIG -------------------------------
 #
 # Pager and editor
@@ -250,16 +247,22 @@ command -v exegol >/dev/null &&
     alias exegol='sudo -E $(which exegol)'
 
 # Rust (via rustup)
-[[ -d $HOME/.cargo/bin/ ]] && append_path "$HOME/.cargo/bin/"
+[[ -d $HOME/.cargo/bin/ ]] && append_path "$HOME/.cargo/bin"
 
 # Go
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/.local/bin"
 
+# mysql-client
+[[ -d "/opt/homebrew/opt/mysql-client/bin/" ]] && append_path "/opt/homebrew/opt/mysql-client/bin"
+
 # Kubectl
 command -v kubectl >/dev/null &&
     source <(kubectl completion $(basename $SHELL)) &&
     complete -F __start_kubectl k
+
+# LM Studio
+[[ -d $HOME/.lmstudio/bin ]] && append_path "$HOME/.lmstudio/bin"
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

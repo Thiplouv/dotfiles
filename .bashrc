@@ -14,8 +14,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_NO_ENV_HINTS=1
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # Prefers Linux man pages
+    # Prefers Linux stuff (GNU)
     alias man='gman'
+    alias sed='gsed'
 
     # Brew bash completion
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
@@ -263,6 +264,9 @@ command -v kubectl >/dev/null &&
 
 # LM Studio
 [[ -d $HOME/.lmstudio/bin ]] && append_path "$HOME/.lmstudio/bin"
+
+# Arduino CLI
+export ARDUINO_CONFIG_FILE="$XDG_CONFIG_HOME/arduino/arduino-cli.yaml"
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

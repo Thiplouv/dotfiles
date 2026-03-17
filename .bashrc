@@ -267,6 +267,7 @@ command -v kubectl >/dev/null &&
 
 # Arduino CLI
 export ARDUINO_CONFIG_FILE="$XDG_CONFIG_HOME/arduino/arduino-cli.yaml"
+alias ino='arduino-cli'
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

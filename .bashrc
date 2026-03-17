@@ -123,7 +123,9 @@ alias la='ls -lhFA'
 
 # CAT & LESS
 command -v bat >/dev/null &&
-    alias cat='bat'
+    eval "$(bat --completion bash)" &&
+    alias cat='bat' &&
+    complete -F _bat cat
 
 # Sourcing
 alias sbash='source ~/.bashrc'
@@ -131,8 +133,9 @@ alias sv='source ./.venv/bin/activate'
 alias slab='source $HOME/.lab.env'
 
 # Git
-alias gs='git status'
-alias gl='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all'
+alias gs='git status' && complete -F _git_status gs
+alias gl='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all' &&
+    complete -F _git_log gl
 alias gcm='git checkout master'
 alias gcom='git commit -m'
 alias gb='git branch'
@@ -145,13 +148,13 @@ alias gst='git stash push -m'
 alias gm='git merge --no-commit --ff-only'
 
 # K8S
-alias k='kubectl'
+alias k='kubectl' && complete -F __start_kubectl k
 alias kgj='kubectl get jobs --sort-by=.metadata.creationTimestamp'
 alias kgcj='kubectl get cj --sort-by=.metadata.creationTimestamp'
 alias kgp='kubectl get pods --sort-by=.metadata.creationTimestamp'
 alias kda='kubectl delete all --all'
 alias kds='kubectl delete secrets --all'
-alias kl='kubectl logs -f'
+alias kl='kubectl logs -f' && complete -F __start_kubectl kl
 alias kkillpod='kubectl delete pods --grace-period=0 --force'
 alias ksuspendcj='kubectl patch cronjobs -p "{\"spec\" : {\"suspend\" : true }}"'
 alias kunsuspendcj='kubectl patch cronjobs -p "{\"spec\" : {\"suspend\" : false }}"'
@@ -214,6 +217,7 @@ command -v pip3 >/dev/null &&
 # Ripgrep
 command -v rg >/dev/null &&
     alias grep='rg' &&
+    complete -F _rg grep &&
     export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
 # FZF
@@ -259,15 +263,16 @@ export GOBIN="$HOME/.local/bin"
 
 # Kubectl
 command -v kubectl >/dev/null &&
-    source <(kubectl completion $(basename $SHELL)) &&
-    complete -F __start_kubectl k
+    source <(kubectl completion $(basename $SHELL))
 
 # LM Studio
 [[ -d $HOME/.lmstudio/bin ]] && append_path "$HOME/.lmstudio/bin"
 
 # Arduino CLI
-export ARDUINO_CONFIG_FILE="$XDG_CONFIG_HOME/arduino/arduino-cli.yaml"
-alias ino='arduino-cli'
+command -v arduino-cli >/dev/null &&
+    export ARDUINO_CONFIG_FILE="$XDG_CONFIG_HOME/arduino/arduino-cli.yaml" &&
+    alias ino='arduino-cli' &&
+    complete -F __start_arduino-cli ino
 
 # ----------------------------------- IMPORTS ----------------------------------
 #

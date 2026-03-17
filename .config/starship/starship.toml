@@ -1,0 +1,59 @@
+# Starship configuration for tplouviez@bwi.earth
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+format = """
+$git_branch$git_status\
+$hostname$kubernetes🐗 $python[➜](bold blue) $directory$jobs[\\$](blue) 
+"""
+
+[directory]
+truncation_length = 1
+
+[hostname]
+ssh_only = true
+ssh_symbol = ' '
+format = '[$ssh_symbol$hostname]($style) '
+
+[jobs]
+format = '[$symbol$number]($style) '
+style = 'bold red'
+symbol = '+'
+symbol_threshold = 1
+number_threshold = 1
+disabled = false
+
+[git_branch]
+format = "[$symbol $branch(:$remote_branch)]($style) "
+symbol = ""
+style = "bright-blue"
+truncation_length = 30
+
+[git_status]
+format = "$all_status\n"
+conflicted = "[ ${count}](#ffde21) "
+untracked = "[ ${count}](red) "
+stashed = "[ ${count}](#895129) "
+modified = "[󰜥 ${count}](red) "
+staged = "[ ${count}](bright-green) "
+renamed = "[ ${count}](bright-green) "
+deleted = "[󰈸 ${count}](bright-green) "
+typechanged = "[ ${count}](bright-green) "
+
+
+[python]
+format = '[\($version\)]($style) '
+style = '#ffde21'
+pyenv_version_name = true
+detect_extensions = []
+detect_files = []
+detect_folders = []
+
+[kubernetes]
+format = '[$symbol$context( \($namespace\))]($style) '
+disabled = false
+

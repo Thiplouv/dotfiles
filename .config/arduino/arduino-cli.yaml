@@ -1,0 +1,8 @@
+board_manager:
+  additional_urls: []
+library:
+  enable_unsafe_install: true
+updater:
+  enable_notification: false
+metrics:
+  enabled: false
